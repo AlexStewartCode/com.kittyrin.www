@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <title>Snep!</title>
+
+        <script src="assets/jquery-3.3.1.min.js"></script>
+    </head>
+
+    <!-- Inline styling-->
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            background: url('assets/new_year_background.png');
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- Body and whatnot -->
+    <body>
+        <canvas class="snow"></canvas>
+    </body>
+
+    <!-- Snow Javascript -->
+    <!-- Fork from https://codepen.io/pimskie/pen/jEVPNx, Modifed by Wisp -->
+    <script type="text/javascript">
+        let canvas = document.querySelector('.snow');
+        let ctx = canvas.getContext('2d');
+        let windowW;
+        let windowH;
+        let numFlakes;
+        let flakes = [];
+
+        function clear() {
+            windowW = window.innerWidth;
+            windowH = window.innerHeight;
+            numFlakes = window.innerWidth / 10;
+            flakes = [];
+        }
+
+        // Creates a flake at a specific position
+        function Flake(x, y) {
+            const minWeight = 1;
+            const maxWeight = 2;
+            const maxSpeed = 1.5;
+
+            this.x = x;
+            this.y = y;
+            this.r = randomBetween(0, 1);
+            this.a = randomBetween(0, Math.PI);
+            this.aStep = 0.01;
+
+            this.weight = randomBetween(minWeight, maxWeight);
+            this.alpha = (this.weight / maxWeight);
+            this.speed = (this.weight / maxWeight) * maxSpeed;
+
+            this.update = function() {
+                this.x += Math.cos(this.a) * this.r;
+                this.a += this.aStep;
+                this.y += this.speed;
+            }
+        }
+
+        // Perform initial random distribution on the screen
+        function init() {
+            for (let i = 0; i < numFlakes; ++i) {
+                let x = randomBetween(0, windowW, true);
+                let y = randomBetween(0, windowH, true);
+
+                let flake = new Flake(x, y);
+                flakes.push(flake);
+            }
+
+            scaleCanvas();
+        }
+
+        // Adjusts the sizing to window 
+        function scaleCanvas() {
+            canvas.width = windowW;
+            canvas.height = windowH;
+        }
+
+        // Priamry loop
+        function loop() {
+            // clear canvas
+            ctx.save();
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.clearRect(0, 0, windowW, windowH);
+            ctx.restore();
+
+            for (let i = 0; i < flakes.length; ++i) {
+                let flake = flakes[i];
+                flake.update();
+
+                ctx.beginPath();
+                ctx.arc(flake.x, flake.y, flake.weight, 0, 2 * Math.PI, false);
+                ctx.fillStyle = 'rgba(255, 255, 255, ' + flake.alpha + ')';
+                ctx.fill();
+
+                // Vertically loop snowfall
+                if (flake.y >= windowH)
+                    flake.y = -flake.weight;
+            }
+
+            requestAnimationFrame(loop);
+        }
+
+        // Utility: Random
+        function randomBetween(min, max, round) {
+            let num = Math.random() * (max - min + 1) + min;
+            return round ? Math.floor(num) : num;
+        }
+
+        // Utility: Distance
+        function distanceBetween(vector1, vector2) {
+            let dx = vector2.x - vector1.x;
+            let dy = vector2.y - vector1.y;
+
+            return Math.sqrt(dx*dx + dy*dy);
+        }
+
+        // Handle resizing
+        window.onresize = function() {
+            clear();
+            init();
+            scaleCanvas();
+        }
+
+        // Starts up the snow
+        clear();
+        init();
+        loop();
+    </script>
+
+    <!-- Icon and button positioning Javascript -->
+    <!-- Adapted from https://www.reveriewisp.com 11/20/2018 -->
+    <script type="text/javascript">
+        // Acquire the center image and remove drag start events.
+        document.getElementById('paw-pad').ondragstart = function() { 
+            return false; 
+        };
+
+        // Position the buttons around the image.
+        function positionIconsOnLoad() {
+            // Defined variables for finding items and calculating positons
+            let fields = $('.btn-radial');
+            let imageDiv = $('#rw-approximately-centered-div');
+
+            // Ring calculation for button locations
+            let radiusOffset = 15;
+            let radius = ($('#paw-pad').height() / 2) + radiusOffset;
+
+            // Div width and height for positioning
+            let magicNumberOffsetX = -12; // literally a magic offset number
+            let magicNumberOffsetY = -27;
+            let width = 300 + magicNumberOffsetY;//imageDiv.width() + magicNumberOffsetY;
+            let height = 300 + magicNumberOffsetX;//imageDiv.height() + magicNumberOffsetX;
+
+            // By default the step evently distributes locations. This scales it.
+            let arcSpacing = 13.5;
+            let auto_rad_conversion = arcSpacing * 3.1415/180;
+            let initRotationOffset = -15; // In degrees because of rasins
+            let step = (2*Math.PI) / fields.length * auto_rad_conversion;
+            let angle = (initRotationOffset * 3.1415/180) + step;
+
+            // Distribute function
+            fields.each(function() {
+                // Generate location
+                let x = Math.round(width/2 + radius * Math.cos(angle) - $(this).width()/2);
+                let y = Math.round(height/2 + radius * Math.sin(angle) - $(this).height()/2);
+
+                $(this).css({ left: x + 'px', top: y + 'px' });
+
+                // Update stepping
+                angle += step;
+            });
+        }
+
+        window.onload = function() {
+            positionIconsOnLoad();
+        };
+    </script>
+</html>
