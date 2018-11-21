@@ -1,25 +1,141 @@
 <!DOCTYPE html>
 <html>  
+    <!-- Head / Title information -->
     <head>
+        <!-- Page Setup -->
         <title>Snep!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="assets/favicon-temp.ico" type="image/x-icon"/>
 
+        <!-- External 'libs' -->
         <script src="assets/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="assets/bootstrap.min.css">
     </head>
 
-    <!-- Inline styling-->
+
+
+    <!-- Inline styling -->
     <style>
         html, body {
             margin: 0px;
             padding: 0px;
-            background: url('assets/new_year_background.png');
+            background: url('assets/fabric.png');
             overflow: hidden;
         }
+
+        #paw-pad {
+            width: 200px;
+            height: 140px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -98px;
+            margin-top: -70px;
+        }
+        
+        .paw-bean {
+            position: absolute;
+
+            /* hide beans inside the pad first */
+            top: 10px;
+            left: 50px;
+        }
+
+        .paw-bean:hover {
+            filter: brightness(110%);
+        }
+
+        .paw-outline {
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,.3));
+        }
+
+        .snow {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
     </style>
+
+
 
     <!-- Body and whatnot -->
     <body>
         <canvas class="snow"></canvas>
+        <div id="paw-pad">
+            <img id="pawb" class="paw-outline" src="assets/pad.png" alt="pawb pad">
+            <a href="#"><img class="paw-bean paw-outline" src="assets/bean.png" alt="smol bean"></a>
+            <a href="#"><img class="paw-bean paw-outline" src="assets/bean.png" alt="smol bean"></a>
+            <a href="#"><img class="paw-bean paw-outline" src="assets/bean.png" alt="smol bean"></a>
+            <a href="#"><img class="paw-bean paw-outline" src="assets/bean.png" alt="smol bean"></a>
+        </div>
     </body>
+
+
+
+    <!-- Icon and button positioning Javascript -->
+    <!-- Adapted from https://www.reveriewisp.com 11/20/2018 -->
+    <script type="text/javascript">
+        // Acquire the center image and remove drag start events.
+        document.getElementById('pawb').ondragstart = function() { 
+            return false; 
+        };
+
+        // Position the buttons around the image.
+        function positionIconsOnLoad() {
+            // Defined variables for finding items and calculating positons
+            let fields = $('.paw-bean');
+            let imageDiv = $('#center');
+            let imageHeight = 140;
+            let imageWidth = 200;
+
+            // Ring calculation for button locations
+            let radiusOffset = 40;
+            let radius = ($('#paw-pad').width() / 2) + radiusOffset;
+
+            // By default the step evently distributes locations. This scales it.
+            let arcSpacing = 30;
+            let auto_rad_conversion = arcSpacing * 3.1415 / 180;
+            let initRotationOffset = 156.5;
+            let step = (2 * Math.PI) / fields.length * auto_rad_conversion;
+            let angle = (initRotationOffset * 3.1415 / 180) + step;
+
+            // Distribute function
+            let num = 0;
+            fields.each(function() {
+                if(num == 1)
+                {
+                    // Special casing the middle spacing
+                    arcSpacing = 24;
+                    auto_rad_conversion = arcSpacing * 3.1415 / 180;
+                    step = (2 * Math.PI) / fields.length * auto_rad_conversion;
+                }
+                else
+                {
+                    // General case, spacing for left and right
+                    arcSpacing = 30;
+                    auto_rad_conversion = arcSpacing * 3.1415 / 180;
+                    step = (2 * Math.PI) / fields.length * auto_rad_conversion;
+                }
+
+                // Positioning
+                let x = Math.round(imageWidth / 2 + radius * Math.cos(angle) - $(this).width() / 2);
+                let y = Math.round(imageHeight / 2 + radius * Math.sin(angle) - $(this).height() / 2);
+                $(this).css({ left: x + 'px', top: y + 'px' });
+                $(this).show();
+
+                // Update stepping
+                angle += step;
+                num += 1;
+            });
+        }
+
+        window.onload = function() {
+            positionIconsOnLoad();
+        };
+    </script>
+
+
 
     <!-- Snow Javascript -->
     <!-- Fork from https://codepen.io/pimskie/pen/jEVPNx, Modifed by Wisp -->
@@ -34,7 +150,7 @@
         function clear() {
             windowW = window.innerWidth;
             windowH = window.innerHeight;
-            numFlakes = window.innerWidth / 10;
+            numFlakes = window.innerWidth / 5.5;
             flakes = [];
         }
 
@@ -130,54 +246,5 @@
         clear();
         init();
         loop();
-    </script>
-
-    <!-- Icon and button positioning Javascript -->
-    <!-- Adapted from https://www.reveriewisp.com 11/20/2018 -->
-    <script type="text/javascript">
-        // Acquire the center image and remove drag start events.
-        document.getElementById('paw-pad').ondragstart = function() { 
-            return false; 
-        };
-
-        // Position the buttons around the image.
-        function positionIconsOnLoad() {
-            // Defined variables for finding items and calculating positons
-            let fields = $('.btn-radial');
-            let imageDiv = $('#rw-approximately-centered-div');
-
-            // Ring calculation for button locations
-            let radiusOffset = 15;
-            let radius = ($('#paw-pad').height() / 2) + radiusOffset;
-
-            // Div width and height for positioning
-            let magicNumberOffsetX = -12; // literally a magic offset number
-            let magicNumberOffsetY = -27;
-            let width = 300 + magicNumberOffsetY;//imageDiv.width() + magicNumberOffsetY;
-            let height = 300 + magicNumberOffsetX;//imageDiv.height() + magicNumberOffsetX;
-
-            // By default the step evently distributes locations. This scales it.
-            let arcSpacing = 13.5;
-            let auto_rad_conversion = arcSpacing * 3.1415/180;
-            let initRotationOffset = -15; // In degrees because of rasins
-            let step = (2*Math.PI) / fields.length * auto_rad_conversion;
-            let angle = (initRotationOffset * 3.1415/180) + step;
-
-            // Distribute function
-            fields.each(function() {
-                // Generate location
-                let x = Math.round(width/2 + radius * Math.cos(angle) - $(this).width()/2);
-                let y = Math.round(height/2 + radius * Math.sin(angle) - $(this).height()/2);
-
-                $(this).css({ left: x + 'px', top: y + 'px' });
-
-                // Update stepping
-                angle += step;
-            });
-        }
-
-        window.onload = function() {
-            positionIconsOnLoad();
-        };
     </script>
 </html>
