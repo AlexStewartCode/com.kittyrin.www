@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>  
+    <!-- Head / Title information -->
+    <head>
+        <!-- Page Setup -->
+        <title>Thank you for everything</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="/assets/favicon-temp.ico" type="image/x-icon"/>
+
+        <!-- External 'libs' -->
+        <script src="/assets/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="/assets/bootstrap.min.css">
+    </head>
+
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            background: url('/assets/fabric.png');
+            overflow-x: hidden;
+        }
+
+        .snow {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+        }
+
+        .list {
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+            min-width: 280px;
+            max-width: 400px;
+            background-color: rgba(255,255,255,.5);
+            border-radius: 7px;
+        }
+    </style>
+
+    <body>
+        <canvas class="snow"></canvas>
+        <div class="container list">
+            <h3 class="text-left">Rin,</h3>
+            <h4>In the spirit of Thanksgiving, I wanted to mention 20 things about you I'm thankful for</h4>
+            <hr/>
+                <p>The lovely way you say "Good morning!"</p>
+                <p>The chatter you bring and silly jokes you post, and how you can make people laugh!</p>
+                <p>The days we voice chat while programming, and tumble through code together as best we can!</p>
+                <p>Your desire to jump up and help your friends when they need support, even if they don't explicitly ask!</p>
+                <p>The courageous way you stand up for others is inspirational!</p>
+                <p>The chill evenings we play games like Civ together just chatting over voice!</p>
+                <p>The care you put into making sure I feel comfortable when we talk ^^</p>
+                <p>Your passion for creating, from plushies to programs and everything in between!<p> 
+                <p>The honesty about your life and the challenges you're overcoming, and the strength you show when tackling them!</p>
+                <p>Your ability to stand up for what you believe in, for yourself and others!</p>
+                <p>Your willingness to lead and take charge in a group, and make people feel welcome!</p>
+                <p>Your drive to have fun and experience exciting things in life!</p>
+                <p>How you're open to all sorts of conversation topics, even if they're bumpy topics or things I'm figuring out ^^~</p>
+                <p>Your drive to help yourself and others explore new things!</p>
+                <p>Your kind support not only when I'm at my best, but when I'm at my worst ^^;</p>
+                <p>All the snugly, fluffy, and saucy pictures you send me~!</p>
+                <p>Asking people about their day and checking in on how they're doing!</p>
+                <p>Your cute messages that make me and others smile at all times of day!</p>
+                <p>Your absolutely adorable love of plushies and fursuits!<p>
+                <p>The lovely way you say "Good night!"</p>
+            <h3 class="text-left"><br/>Love, <br/>Wisp &hearts;</h3>
+            <br/>
+        </div>
+        </div>
+    </body>
+
+
+    <!-- Snow Javascript -->
+    <!-- Fork from https://codepen.io/pimskie/pen/jEVPNx, Modifed by Wisp -->
+    <script type="text/javascript">
+        let canvas = document.querySelector('.snow');
+        let ctx = canvas.getContext('2d');
+        let windowW;
+        let windowH;
+        let numFlakes;
+        let flakes = [];
+
+        function clear() {
+            windowW = window.innerWidth;
+            windowH = window.innerHeight;
+            numFlakes = window.innerWidth / 5.5;
+            flakes = [];
+        }
+
+        // Creates a flake at a specific position
+        function Flake(x, y) {
+            const minWeight = 1;
+            const maxWeight = 2;
+            const maxSpeed = 1.5;
+
+            this.x = x;
+            this.y = y;
+            this.r = randomBetween(0, 1);
+            this.a = randomBetween(0, Math.PI);
+            this.aStep = 0.01;
+
+            this.weight = randomBetween(minWeight, maxWeight);
+            this.alpha = (this.weight / maxWeight);
+            this.speed = (this.weight / maxWeight) * maxSpeed;
+
+            this.update = function() {
+                this.x += Math.cos(this.a) * this.r;
+                this.a += this.aStep;
+                this.y += this.speed;
+            }
+        }
+
+        // Perform initial random distribution on the screen
+        function init() {
+            for (let i = 0; i < numFlakes; ++i) {
+                let x = randomBetween(0, windowW, true);
+                let y = randomBetween(0, windowH, true);
+
+                let flake = new Flake(x, y);
+                flakes.push(flake);
+            }
+
+            scaleCanvas();
+        }
+
+        // Adjusts the sizing to window 
+        function scaleCanvas() {
+            canvas.width = windowW;
+            canvas.height = windowH;
+        }
+
+        // Priamry loop
+        function loop() {
+            // clear canvas
+            ctx.save();
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.clearRect(0, 0, windowW, windowH);
+            ctx.restore();
+
+            for (let i = 0; i < flakes.length; ++i) {
+                let flake = flakes[i];
+                flake.update();
+
+                ctx.beginPath();
+                ctx.arc(flake.x, flake.y, flake.weight, 0, 2 * Math.PI, false);
+                ctx.fillStyle = 'rgba(255, 255, 255, ' + flake.alpha + ')';
+                ctx.fill();
+
+                // Vertically loop snowfall
+                if (flake.y >= windowH)
+                    flake.y = -flake.weight;
+            }
+
+            requestAnimationFrame(loop);
+        }
+
+        // Utility: Random
+        function randomBetween(min, max, round) {
+            let num = Math.random() * (max - min + 1) + min;
+            return round ? Math.floor(num) : num;
+        }
+
+        // Utility: Distance
+        function distanceBetween(vector1, vector2) {
+            let dx = vector2.x - vector1.x;
+            let dy = vector2.y - vector1.y;
+
+            return Math.sqrt(dx*dx + dy*dy);
+        }
+
+        // Handle resizing
+        window.onresize = function() {
+            clear();
+            init();
+            scaleCanvas();
+        }
+
+        // Starts up the snow
+        clear();
+        init();
+        loop();
+    </script>
+</html>
