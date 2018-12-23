@@ -1,0 +1,101 @@
+<!-- You can download and modify a template for a site like this at https://theportfolio.pw/ -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Configure basics -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Set up title, favicon, and description -->
+    <title>KittyBot</title>
+    <link rel="shortcut icon" href="assets/wrench.ico">
+    <meta name="description" content="KittyBot is a fun discord bot that has a mix of silly and useful commands! If you like the bot, consider supporting on patreon!">
+
+    <!-- Grab Bootstrap and Fontawesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Quicksand" rel="stylesheet">
+
+    <!-- Add style sheet -->
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+  </head>
+
+
+  <!-- Stylesheet added here for ease of iteration. This will make the page load fast, but it can make it harder to manage if your site grows. If you add more pages, heavily consider moving this out to a separate file. -->
+  <style>
+    .product-commands {
+      text-align: left;
+    }
+    .product-back-button {
+      margin-bottom: 1em;
+    }
+  </style>
+
+
+  <!-- This is the body of the site: This is what's displayed in the browser! -->
+  <body id="grad">
+    <div id="grad-child"></div>
+
+
+    <div class="container">
+      <div class="jumbotron">
+       
+
+        <!-- Header, etc -->
+        <h1 class="product-title">Commands</h1>
+        <div class="row">
+                  <!-- Download -->
+          <div class="col-md-2"></div>
+          <div class="col product-commands ">
+            <a class="btn btn-outline-dark product-back-button fa-1x" role="button" href="."><i class="fas fa-chevron-circle-left"></i> Back</a>
+            <h2>Admin commands</h2>
+            <p>
+              <code>rating</code>: 0 is fully sfw (Derpi and e621 searches are disabled), 1 is filtered (kitty auto appends a sfw tag on any searches), 2 is nsfw (any search will go through)<br/>
+              <code>indicator</code>: Changes the command indicator to anything without spaces. By default, it's '!'<br/>
+            </p>
+
+            <h2>Mod commands</h2>
+            <p>
+              <code>poll</code>: start will start a new poll with the query of the line you put after, choice will add a choice to the poll, stop will end the poll<br/>
+            </p>
+
+            <h2>General commands</h2>
+            <p>
+              <code>boop</code>: kitty will react with a counter<br/>
+              <code>roll</code>: based on input of xdy where x is number of dice and y is faces kitty will roll that amount of dice, display the individual rolls and total<br/>
+              <code>choose</code>: with an input of x,y,z where x y and z are all choices, kitty will choose one<br/>
+              <code>help</code>: will display this message<br/>
+              <code>info</code>: will link to her github repo and eventually her patreon for help with paying for her server and eventual website<br/>
+              <code>vote</code>: vote in a poll with the choice number, won't work if no poll is running, you can't change your vote once you have cast it! Be careful!<br/>
+              <code>results</code>: will show current results of a poll and percentages of votes per choice<br/>
+              <code>showpoll</code>: will show the current poll running<br/>
+              <code>wolfram</code>: will query wolframalpha with your question and give a full image output of the answer<br/>
+              <code>cplus</code>: will compile any c++ code you put in<br/>
+              <code>java</code>: will compile any java code you put in<br/>
+              <code>beans</code>: shows a counter of how many posts you have made in the server with her patented way of counting them with one bean per post<br/>
+              <code>role</code>: will show the current role you have, Admins can change others roles with input of role x @y with x being blacklist, general, mod, or admin. Blacklist will not allow the user to interact with kitty anymore, general mod and admin will give the user access to those commands.<br/>
+              <code>derp</code>: will search derpibooru for the tags entered, if allowed<br/>
+              <code>e621</code>: will search e621 for the tags entered, if allowed<br/>
+            </p>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+
+        <hr/>
+
+        <div class="row product-social-footer ">
+          <div class="product-social-footer">
+            <a class="btn btn-outline-dark product-social-link" role="button" href="https://www.patreon.com/Kittybot"><i class="fab fa-patreon"></i></a>
+            <!--a class="btn btn-outline-dark product-social-link" role="button" href="https://discord.com/"><i class="fab fa-discord"></i></a-->
+            <a class="btn btn-outline-dark product-social-link" role="button" href="https://github.com/ReverieWisp/Kitty-Sandbox"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

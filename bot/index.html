@@ -19,58 +19,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Quicksand" rel="stylesheet">
+
+    <!-- Add our style sheet -->
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
   </head>
 
 
-  <!-- Stylesheet added here for ease of iteration. This will make the page load fast, but it can make it harder to manage if your site grows. If you add more pages, heavily consider moving this out to a separate file. -->
+  <!-- Page-specific stuff here... -->
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      border: 0;
-    }
-
-    html {
-      min-height: 100%;
-      position: relative;
-    }
-
-    h2 {
-      font-family: 'Quicksand', sans-serif;
-    }
-
-    #grad {
-      background-image: linear-gradient(#B1A9D6, #fffcdc);
-      text-align: center;
-    }
-
-    #grad-child {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      background-image: url("assets/stripes-light.png");
-      display: block;
-      z-index: -1;
-    }
-
-    .container {
-      margin-bottom: 0px;
-    }
-
-    .jumbotron {
-      background-color: rgba(0,0,0,0);
-      margin-bottom: 0px
-    }
-
-    .product-title {
-      margin-bottom: 0.5em;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 60px;
-      color: #765DA3;
-    }
-
     .product-image {
       margin: 10px 0px;
       border-radius: 10000px;
@@ -91,24 +47,6 @@
 
     .product-get-button {
       margin-top: 2.5em;
-    }
-
-
-    .product-social-link {
-      font-size: 1em;
-      width: 40px;
-    }
-
-    /* Fix youtube's logo being wide */
-    .product-social-link > .fa-youtube {
-      position: relative;
-      left: -3px;
-    }
-
-    .product-social-footer {
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 10px;
     }
   </style>
 
@@ -145,12 +83,12 @@
           <div class="col-md-5">
             <h2 class="product-description-header">About KittyBot</h2>
             <p class="product-description">KittyBot is a Discord bot with a fair share of both useful and silly commands! Kitty can look things up on several different websites, play games with you, compile your code, roll dice, and all sorts of other stuff!</p>
-            <a class="btn btn-outline-dark product-wide-link" role="button"><i class="fas fa-book"></i> More Info</a> 
+            <a class="btn btn-outline-dark product-wide-link" role="button" href="info.html"><i class="fas fa-book"></i> More Info</a> 
           </div>
           <div class="col-md-5">
             <h2 class="product-description-header">Support Us</h2>
             <p class="product-description">This project wouldn't be possible without support and feedback from everyone! Thank you, and be sure to support us on Patreon for access to exclusive dev posts, updates, and rewards!</p>
-          <a class="btn btn-outline-dark product-wide-link" role="button" href="https://patreon.com/"><i class="fab fa-patreon"></i> Patreon</a>
+          <a class="btn btn-outline-dark product-wide-link" role="button" href="https://www.patreon.com/Kittybot"><i class="fab fa-patreon"></i> Patreon</a>
           </div>
           <div class="col-md-1"></div>
         </div>
