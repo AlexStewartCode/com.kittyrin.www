@@ -64,7 +64,7 @@ characters =
 			"sexuality":"Pansexaul",
 			"preferences":"Meowing mostly",
 			"description":"Just a silly kitty doing her own thing!",
-			"fullImages":[ "assets/Mochni/1.png", "assets/Mochni/2.png", "assets/Mochni/3.png","assets/Mochni/4.png"],
+			"fullImages":[ "assets/Mochni/1.png", "assets/Mochni/2.PNG", "assets/Mochni/3.png","assets/Mochni/4.png"],
 			"characterPageMainColor":"",
 			"characterPageAccentColor":"",
 			"characterPageBorderColor":""
@@ -190,4 +190,5 @@ characters =
 			"characterPageBorderColor":""
         },
     ]
+
 }
