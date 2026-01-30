@@ -1,5 +1,9 @@
 characters =
 {
+	"pageTitle":"Rin's Critters",
+	//This will be what embeds in places like Discord when linked.
+	"pageDescription":"",
+	"faLink":"https://furaffinity.net/user/snowkittyrin",
 	//Colors MUST be in the format of hex. Example: #00FF00
 	"mainPageMainColor":"",
 	"mainPageAccentColor":"",
@@ -7,73 +11,183 @@ characters =
 	"critters":[
 		{ 
 			"name":"Rin",
-			"thumb":"assets/rin.png",
+			"thumb":"assets/Rin/rin.png",
+			"species":"Snow Leopard",
+			"height":"5'8\"",
+			"age":"31",
+			"sexuality":"Bisexual",
+			"preferences":"Meowing mostly",
+			"description":"Just a silly kitty doing her own thing!",
+			"pronouns": "She/Her",
+			"fullImages":[ "assets/Rin/1.png", "assets/Rin/2.png", "assets/Rin/3.png","assets/Rin/4.png","assets/Rin/5.png","assets/Rin/6.png","assets/Rin/7.png","assets/Rin/8.png","assets/Rin/9.png"],
+			"characterPageMainColor":"",
+			"characterPageAccentColor":"",
+			"characterPageBorderColor":""
+        },
+		{
+			"name":"Kaelan",
+			"thumb":"assets/KC/kc.png",
+			"pronouns": "He/Him",
+			"species":"Lion",
+			"height":"6'3\"",
+			"age":"",
+			"sexuality":"Gay",
+			"preferences":"Meowing mostly",
+			"description":"Just a silly kitty doing her own thing!",
+			"fullImages":["assets/KC/1.png", "assets/KC/2.png", "assets/KC/3.png","assets/KC/4.png","assets/KC/5.png"],
+			"characterPageMainColor":"",
+			"characterPageAccentColor":"",
+			"characterPageBorderColor":""
+        },
+        { 
+			"name":"Autumn",
+			"thumb":"assets/Autumn/autumn.png",
+			"pronouns": "He/Him",
+			"species":"Fox",
+			"height":"5'9\"",
+			"age":"",
+			"sexuality":"Gay masc-leaning",
+			"preferences":"Meowing mostly",
+			"description":"Just a silly kitty doing her own thing!",
+			"fullImages":[ "assets/Autumn/1.png", "assets/Autumn/2.png"],
+			"characterPageMainColor":"",
+			"characterPageAccentColor":"",
+			"characterPageBorderColor":""
+        },
+        { 
+			"name":"Mochni",
+			"thumb":"assets/Mochni/mochni.png",
+			"pronouns": "She/Her",
+			"species":"Reindeer",
+			"height":"5'10\"",
+			"age":"31",
+			"sexuality":"Pansexaul",
+			"preferences":"Meowing mostly",
+			"description":"Just a silly kitty doing her own thing!",
+			"fullImages":[ "assets/Mochni/1.png", "assets/Mochni/2.png", "assets/Mochni/3.png","assets/Mochni/4.png"],
+			"characterPageMainColor":"",
+			"characterPageAccentColor":"",
+			"characterPageBorderColor":""
+        },
+        { 
+			"name":"Phi",
+			"thumb":"assets/Phi/phi.png",
+			"pronouns": "They/Them",
 			"species":"Snow Leopard",
 			"height":"5'8\"",
 			"age":"31",
 			"sexuality":"Gayyyyyy",
 			"preferences":"Meowing mostly",
 			"description":"Just a silly kitty doing her own thing!",
-			"pronouns": "She/Her",
-			"fullImages":[ "assets/RinFull.png","assets/kc.png","assets/autumn.png","assets/mochni.png","assets/phi.png"],
+			"fullImages":[ "assets/Phi/1.png"],
 			"characterPageMainColor":"",
 			"characterPageAccentColor":"",
 			"characterPageBorderColor":""
         },
-		{
-          "name":"Kaelan",
-          "thumb":"assets/kc.png",
-          "pronouns": "He/Him"
-        },
-        { 
-          "name":"Autumn",
-          "thumb":"assets/autumn.png",
-          "pronouns": "He/Him"
-        },
-        { 
-          "name":"Mochni",
-          "thumb":"assets/mochni.png",
-          "pronouns": "She/Her"
-        },
-        { 
-          "name":"Phi",
-          "thumb":"assets/phi.png",
-          "pronouns": "They/Them"
+		{ 
+			"name":"Ezra",
+			"thumb":"assets/Ezra/ezra.png",
+			"pronouns": "She/They",
+			"species":"Snow Leopard",
+			"height":"5'8\"",
+			"age":"31",
+			"sexuality":"Gayyyyyy",
+			"preferences":"Meowing mostly",
+			"description":"Just a silly kitty doing her own thing!",
+			"fullImages":[ "assets/Ezra/1.png","assets/Ezra/2.png","assets/Ezra/3.png","assets/Ezra/4.png"],
+			"characterPageMainColor":"",
+			"characterPageAccentColor":"",
+			"characterPageBorderColor":""
         },
 		{ 
-          "name":"Ezra",
-          "thumb":"assets/ezra.png",
-          "pronouns": "She/They"
-        },
-		{ 
-          "name":"HollowNote",
-          "thumb":"assets/hollow.png",
-          "pronouns": "She/Her"
-        },
-        { 
-          "name":"Sylas",
-          "thumb":"assets/sylas.png",
-          "pronouns": "He/Him"
-        },
-        { 
-          "name":"Xeryn",
-          "thumb":"assets/xeryn.png",
-          "pronouns": "He/Him"
+			"name":"HollowNote",
+			"thumb":"assets/Hollow/hollow.png",
+			"pronouns": "She/Her",
+			"species":"Snow Leopard",
+			"height":"5'8\"",
+			"age":"31",
+			"sexuality":"Gayyyyyy",
+			"preferences":"Meowing mostly",
+			"description":"Just a silly kitty doing her own thing!",
+			"fullImages":[ "assets/Hollow/1.png","assets/Hollow/2.png","assets/Hollow/3.png","assets/Hollow/4.png", "assets/Hollow/5.png"],
+			"characterPageMainColor":"",
+			"characterPageAccentColor":"",
+			"characterPageBorderColor":""
         },
         { 
-          "name":"Jun",
-          "thumb":"assets/jun.png",
-          "pronouns": "He/They"
+			"name":"Sylas",
+			"thumb":"assets/Sylas/sylas.png",
+			"pronouns": "He/Him",
+			"species":"Snow Leopard",
+			"height":"5'8\"",
+			"age":"31",
+			"sexuality":"Gayyyyyy",
+			"preferences":"Meowing mostly",
+			"description":"Just a silly kitty doing her own thing!",
+			"fullImages":[ "assets/Sylas/1.png","assets/Sylas/2.png","assets/Sylas/3.png","assets/Sylas/4.png"],
+			"characterPageMainColor":"",
+			"characterPageAccentColor":"",
+			"characterPageBorderColor":""
         },
         { 
-          "name":"Clover",
-          "thumb":"assets/clover.png",
-          "pronouns": "She/Her"
+			"name":"Xeryn",
+			"thumb":"assets/Xeryn/xeryn.png",
+			"pronouns": "He/Him",
+			"species":"Snow Leopard",
+			"height":"5'8\"",
+			"age":"31",
+			"sexuality":"Gayyyyyy",
+			"preferences":"Meowing mostly",
+			"description":"Just a silly kitty doing her own thing!",
+			"fullImages":[ "assets/Xeryn/1.png","assets/Xeryn/2.png"],
+			"characterPageMainColor":"",
+			"characterPageAccentColor":"",
+			"characterPageBorderColor":""
         },
         { 
-          "name":"Myrah",
-          "thumb":"assets/myrah.png",
-          "pronouns": "Any/All"
+			"name":"Jun",
+			"thumb":"assets/Jun/jun.png",
+			"pronouns": "He/They",
+			"species":"Snow Leopard",
+			"height":"5'8\"",
+			"age":"31",
+			"sexuality":"Gayyyyyy",
+			"preferences":"Meowing mostly",
+			"description":"Just a silly kitty doing her own thing!",
+			"fullImages":[ "assets/Jun/1.png"],
+			"characterPageMainColor":"",
+			"characterPageAccentColor":"",
+			"characterPageBorderColor":""
+        },
+        { 
+			"name":"Clover",
+			"thumb":"assets/Clover/clover.png",
+			"pronouns": "She/Her",
+			"species":"Snow Leopard",
+			"height":"5'8\"",
+			"age":"31",
+			"sexuality":"Gayyyyyy",
+			"preferences":"Meowing mostly",
+			"description":"Just a silly kitty doing her own thing!",
+			"fullImages":[ "assets/Clover/1.png"],
+			"characterPageMainColor":"",
+			"characterPageAccentColor":"",
+			"characterPageBorderColor":""
+        },
+        { 
+			"name":"Myrah",
+			"thumb":"assets/Myrah/myrah.png",
+			"pronouns": "Any/All",
+			"species":"Snow Leopard",
+			"height":"5'8\"",
+			"age":"31",
+			"sexuality":"Gayyyyyy",
+			"preferences":"Meowing mostly",
+			"description":"Just a silly kitty doing her own thing!",
+			"fullImages":[ "assets/Myrah/myrah.png"],
+			"characterPageMainColor":"",
+			"characterPageAccentColor":"",
+			"characterPageBorderColor":""
         },
     ]
 }

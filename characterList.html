@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Set up title, favicon, and description -->
-    <title>Rin's Critters</title>
+    <title></title>
     <link rel="shortcut icon" href="assets/folder-open.ico">
-    <meta name="description" content="The Portfolio provides a nice way to get started showcasing a few projects. This site and layout are free to use - a shoutout would be apprecaited if you use it, in the source or elsewhere!">
-    <meta name="author" content="Loam LLC, Matthew Cech"> <!-- Change this for your site! -->
+    <meta name="description" >
+    <meta name="author" content="">
 
     <!-- Go ahead and grab Bootstrap and Fontawesome. -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -21,8 +21,6 @@
     <script type="text/javascript" src="/assets/character.json"></script>
   </head>
 
-
-  <!-- Stylesheet added here for ease of iteration. Consider moving to a separate file. -->
   <style>
     /* Built-in */
     body {
@@ -84,10 +82,10 @@
 
   <!-- This is the body of the site: This is what's displayed in the browser! -->
   <body>
-    <div class="container">
+    <div class="container" id="pageTitle">
       <!-- NAME HEADER AND TITLE -->
-      <h1>Rin's Characters</h1>
-        <a class="btn btn-outline-dark" role="button" href="http://furaffinity.net/user/snowkittyrin"><i class="fa fa-link" aria-hidden="true"></i> FurAffinity</a>
+      
+        <a class="btn btn-outline-dark" role="button" href="http://furaffinity.net/user/snowkittyrin" id="faLinkButton"><i class="fa fa-link" aria-hidden="true"></i> FurAffinity</a>
       <hr/>
 
       <!-- columns start -->
@@ -97,46 +95,49 @@
       <!-- columns end -->
     </div>
   
-  <script type="text/javascript">
+    <script type="text/javascript">
 
-  let accumulated = "";
-  for(let i = 0; i < characters.critters.length; i++)
-  {
-    let cur = characters.critters[i];
-    let charhtml = `
-      <a class="btn btn-outline-dark col-md-4 portfolio-showcase-col" href="/character.html?name=${cur.name.toLowerCase()}" id="characterBox${i}">
-        <img class="portfolio-showcase-img" src="${cur.thumb}">
-        <p class="portfolio-showcase-title">${cur.name}</p>
-        <p class="portfolio-showcase-heading2">${cur.pronouns}</p>
-      </a>`;
-    accumulated += charhtml;
-  }
-
-  document.getElementById("characterHome").innerHTML = accumulated;
-  
-  console.log(characters.mainPageMainColor);
-  console.log("blah");
-  if(CSS.supports('color', characters.mainPageMainColor))
-  {
-    document.body.style.backgroundColor = characters.mainPageMainColor;
-  }
-
-  if(CSS.supports('color', characters.mainPageAccentColor))
-  {
+    let accumulated = "";
     for(let i = 0; i < characters.critters.length; i++)
     {
-      document.getElementById("characterBox" + i).style.backgroundColor = characters.mainPageAccentColor;
+      let cur = characters.critters[i];
+      let charhtml = `
+        <a class="btn btn-outline-dark col-md-4 portfolio-showcase-col" href="/character.html?name=${cur.name.toLowerCase()}" id="characterBox${i}">
+          <img class="portfolio-showcase-img" src="${cur.thumb}">
+          <p class="portfolio-showcase-title">${cur.name}</p>
+          <p class="portfolio-showcase-heading2">${cur.pronouns}</p>
+        </a>`;
+      accumulated += charhtml;
     }
-  }
 
-  if(CSS.supports('color', characters.mainPageBorderColor))
-  {
-    for(let i = 0; i < characters.critters.length; i++)
+    document.getElementById("characterHome").innerHTML = accumulated;
+    
+    if(CSS.supports('color', characters.mainPageMainColor))
     {
-      document.getElementById("characterBox" + i).style.border = "solid " + characters.mainPageBorderColor;
+      document.body.style.backgroundColor = characters.mainPageMainColor;
     }
-  }
-  </script>
-</body>
+
+    if(CSS.supports('color', characters.mainPageAccentColor))
+    {
+      for(let i = 0; i < characters.critters.length; i++)
+      {
+        document.getElementById("characterBox" + i).style.backgroundColor = characters.mainPageAccentColor;
+      }
+    }
+
+    if(CSS.supports('color', characters.mainPageBorderColor))
+    {
+      for(let i = 0; i < characters.critters.length; i++)
+      {
+        document.getElementById("characterBox" + i).style.border = "solid " + characters.mainPageBorderColor;
+      }
+    }
+
+    document.querySelector('meta[name="description"]').setAttribute("content", characters.pageDescription);
+    document.title.innerHTML = characters.pageTitle;
+    let pageTitleTemp = '<h1>' +  characters.pageTitle + '</h1>';
+    document.getElementById("pageTitle").innerHTML = pageTitleTemp + document.getElementById("pageTitle").innerHTML;
+    document.getElementById("faLinkButton").setAttribute('href', characters.faLink);
+    </script>
+  </body>
 </html>
-
