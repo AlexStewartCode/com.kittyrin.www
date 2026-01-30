@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <!-- Free website template created by Matthew Cech for Loam LLC -->
+  <head>
+    <!-- Configure meta tags accordingly. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Set up title, favicon, and description -->
+    <title>Rin's Critters</title>
+    <link rel="shortcut icon" href="assets/folder-open.ico">
+    <meta name="description" content="The Portfolio provides a nice way to get started showcasing a few projects. This site and layout are free to use - a shoutout would be apprecaited if you use it, in the source or elsewhere!">
+    <meta name="author" content="Loam LLC, Matthew Cech"> <!-- Change this for your site! -->
+
+    <!-- Go ahead and grab Bootstrap and Fontawesome. -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/assets/character.json"></script>
+  </head>
+
+  <style>
+    /* Built-in */
+    body {
+      background-color: rgb(232, 206, 235);
+    }
+
+    .btn{
+      margin-right:15px;
+      margin-top:25px;
+    }
+
+    .character-name{
+      font-size: 60px;
+      border-bottom: solid 1px black;
+    }
+
+
+    .character-photo{
+      border: solid 2px;
+      border-radius: 15px;
+
+      padding: 0px;
+      margin-top: 25px;
+    }
+
+    .character-info{
+      background-color:  rgb(207, 162, 245);
+      border: solid 2px;
+      border-radius: 15px;
+      
+      margin-top:25px;
+      
+      
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      text-align: left;
+      font-size: 20px;
+    }
+
+    .character-info-line{
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .character-description{
+      background-color: rgb(207, 162, 245);
+      border: solid 2px;
+      border-radius: 15px;
+      margin-top: 25px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+
+  </style>
+
+  <body>
+    <div class="container">
+      <a class="btn btn-outline-secondary" role="button" href="/characterList.html"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+      <div class="character-name" id="name">
+
+      </div>
+
+      <div class="row character-container" id="character"> 
+        <div class="col-lg-8">
+          <div class="row">
+            <img class="character-photo col-lg-12" id="shownPic">
+            <div class="character-info col-12" id="picSelectionBox">
+            </div>
+          </div>
+        </div>
+        
+        <div class="spacer col-md-auto" > </div>
+        <div class="col-lg">
+          <div class="row">
+            <div class="character-info col-lg" id="basicInfo">
+              <p class="character-info-line" id="species"></p>
+              <p class="character-info-line" id="pronouns"></p>
+              <p class="character-info-line" id="height"></p>
+              <p class="character-info-line" id="age"></p>
+              <p class="character-info-line" id="sexuality"></p>
+              <p class="character-info-line" id="preferences"></p>
+            </div>
+            <div class="character-description col-md-12" id="description">
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+
+    <script type="text/javascript">
+      urlParams = new URLSearchParams(window.location.search);
+      characterName = urlParams.get('name');
+      
+      let characterInfo = "";
+
+      for(let i = 0; i < characters.critters.length; i++)
+      {
+        if(characters.critters[i].name.toLowerCase() == characterName)
+        {
+          characterInfo = characters.critters[i];
+        }
+      }
+
+      document.getElementById("name").innerHTML = characterInfo.name;
+      document.getElementById("species").innerHTML = "Species: " + characterInfo.species;
+      document.getElementById("pronouns").innerHTML = "Pronouns: " + characterInfo.pronouns;
+      document.getElementById("height").innerHTML = "Height: " + characterInfo.height;
+      document.getElementById("age").innerHTML = "Age: " + characterInfo.age;
+      document.getElementById("sexuality").innerHTML = "Sexuality: " + characterInfo.sexuality;
+      document.getElementById("preferences").innerHTML = "Preferences: " + characterInfo.preferences;
+      document.getElementById("description").innerHTML = characterInfo.description;
+
+      document.getElementById("shownPic").src = characterInfo.fullImages[0];
+
+      for(let i = 0; i < characterInfo.fullImages.length; i++)
+      {
+        let newImage = document.createElement('img');
+        newImage.className = "col-2";
+        newImage.style = "margin-top: 10px; margin-bottom: 10px;";
+        newImage.src = characterInfo.fullImages[i];
+        newImage.onclick = function() { 
+          document.getElementById("shownPic").src = characterInfo.fullImages[i];
+        }
+        document.getElementById("picSelectionBox").appendChild(newImage);
+      }
+
+      if(CSS.supports('color', characterInfo.characterPageMainColor))
+      {
+        document.body.style.backgroundColor = characterInfo.characterPageMainColor;
+      }
+
+      if(CSS.supports('color', characterInfo.characterPageAccentColor))
+      {
+        document.getElementById("picSelectionBox").style.backgroundColor = characterInfo.characterPageAccentColor;
+        document.getElementById("basicInfo").style.backgroundColor = characterInfo.characterPageAccentColor;
+        document.getElementById("description").style.backgroundColor = characterInfo.characterPageAccentColor;
+      }
+
+      if(CSS.supports('color', characterInfo.characterPageBorderColor))
+      {
+        document.getElementById("shownPic").style.border = "solid 2px " + characterInfo.characterPageBorderColor;
+        document.getElementById("picSelectionBox").style.border = "solid 2px " + characterInfo.characterPageBorderColor;
+        document.getElementById("basicInfo").style.border = "solid 2px " + characterInfo.characterPageBorderColor;
+        document.getElementById("description").style.border = "solid 2px " + characterInfo.characterPageBorderColor;
+      }
+
+    </script>
+
+  </body>
+ </html>

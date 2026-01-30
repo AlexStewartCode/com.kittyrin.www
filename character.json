@@ -1,0 +1,79 @@
+characters =
+{
+	//Colors MUST be in the format of hex. Example: #00FF00
+	"mainPageMainColor":"",
+	"mainPageAccentColor":"",
+	"mainPageBorderColor":"",
+	"critters":[
+		{ 
+			"name":"Rin",
+			"thumb":"assets/rin.png",
+			"species":"Snow Leopard",
+			"height":"5'8\"",
+			"age":"31",
+			"sexuality":"Gayyyyyy",
+			"preferences":"Meowing mostly",
+			"description":"Just a silly kitty doing her own thing!",
+			"pronouns": "She/Her",
+			"fullImages":[ "assets/RinFull.png","assets/kc.png","assets/autumn.png","assets/mochni.png","assets/phi.png"],
+			"characterPageMainColor":"",
+			"characterPageAccentColor":"",
+			"characterPageBorderColor":""
+        },
+		{
+          "name":"Kaelan",
+          "thumb":"assets/kc.png",
+          "pronouns": "He/Him"
+        },
+        { 
+          "name":"Autumn",
+          "thumb":"assets/autumn.png",
+          "pronouns": "He/Him"
+        },
+        { 
+          "name":"Mochni",
+          "thumb":"assets/mochni.png",
+          "pronouns": "She/Her"
+        },
+        { 
+          "name":"Phi",
+          "thumb":"assets/phi.png",
+          "pronouns": "They/Them"
+        },
+		{ 
+          "name":"Ezra",
+          "thumb":"assets/ezra.png",
+          "pronouns": "She/They"
+        },
+		{ 
+          "name":"HollowNote",
+          "thumb":"assets/hollow.png",
+          "pronouns": "She/Her"
+        },
+        { 
+          "name":"Sylas",
+          "thumb":"assets/sylas.png",
+          "pronouns": "He/Him"
+        },
+        { 
+          "name":"Xeryn",
+          "thumb":"assets/xeryn.png",
+          "pronouns": "He/Him"
+        },
+        { 
+          "name":"Jun",
+          "thumb":"assets/jun.png",
+          "pronouns": "He/They"
+        },
+        { 
+          "name":"Clover",
+          "thumb":"assets/clover.png",
+          "pronouns": "She/Her"
+        },
+        { 
+          "name":"Myrah",
+          "thumb":"assets/myrah.png",
+          "pronouns": "Any/All"
+        },
+    ]
+}
