@@ -34,7 +34,7 @@ characters =
 			"sexuality":"Gay",
 			"preferences":"Meowing mostly",
 			"description":"Just a silly kitty doing her own thing!",
-			"fullImages":["assets/KC/1.png", "assets/KC/2.png", "assets/KC/3.png","assets/KC/4.png","assets/KC/5.png"],
+			"fullImages":["assets/KC/1.jpg", "assets/KC/2.jpg", "assets/KC/3.jpg","assets/KC/4.jpg","assets/KC/5.jpg"],
 			"characterPageMainColor":"",
 			"characterPageAccentColor":"",
 			"characterPageBorderColor":""
@@ -49,7 +49,7 @@ characters =
 			"sexuality":"Gay masc-leaning",
 			"preferences":"Meowing mostly",
 			"description":"Just a silly kitty doing her own thing!",
-			"fullImages":[ "assets/Autumn/1.png", "assets/Autumn/2.png"],
+			"fullImages":[ "assets/Autumn/1.png", "assets/Autumn/2.jpg"],
 			"characterPageMainColor":"",
 			"characterPageAccentColor":"",
 			"characterPageBorderColor":""
@@ -109,7 +109,7 @@ characters =
 			"sexuality":"Gayyyyyy",
 			"preferences":"Meowing mostly",
 			"description":"Just a silly kitty doing her own thing!",
-			"fullImages":[ "assets/Hollow/1.png","assets/Hollow/2.png","assets/Hollow/3.png","assets/Hollow/4.png", "assets/Hollow/5.png"],
+			"fullImages":[ "assets/Hollow/1.jpg","assets/Hollow/2.png","assets/Hollow/3.png","assets/Hollow/4.png", "assets/Hollow/5.png"],
 			"characterPageMainColor":"",
 			"characterPageAccentColor":"",
 			"characterPageBorderColor":""
