@@ -34,7 +34,7 @@ characters =
 			"sexuality":"Gay",
 			"preferences":"Meowing mostly",
 			"description":"Just a silly kitty doing her own thing!",
-			"fullImages":["assets/KC/1.jpg", "assets/KC/2.jpg", "assets/KC/3.jpg","assets/KC/4.jpg","assets/KC/5.jpg"],
+			"fullImages":["assets/KC/1.JPG", "assets/KC/2.jpg", "assets/KC/3.jpg","assets/KC/4.jpg","assets/KC/5.jpg"],
 			"characterPageMainColor":"",
 			"characterPageAccentColor":"",
 			"characterPageBorderColor":""
@@ -192,3 +192,4 @@ characters =
     ]
 
 }
+
